@@ -15,7 +15,7 @@ server_scripts/
 │  
 ├── /monitoring/              # Мониторинг и логи  
 │   ├── ip_address_monitoring # Telegram Bot Setup Guide for IP Monitoring  
-│   ├── log_cleaner.sh        # Очистка старых логов  
+│   ├── connection_tracker.sh # Telegram Bot Configuration Guide for ssh Connection Monitoring
 │   └── service_checker.py    # Проверка статуса сервисов  
 │  
 ├── /security/               # Безопасность  
