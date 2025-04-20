@@ -1,6 +1,6 @@
-# Telegram Bot Setup Guide for IP Monitoring
+# Guide to Setting Up Telegram Bot for Monitoring nginx Sites
  
-#### Script for monitoring external IP address and sending notifications to Telegram
+#### Guide to setting up Telegram Bot for monitoring sites on external IPs with different nginx ports
 
 ## 1. Create a Bot and Get Token
 1. Open Telegram and search for `@BotFather`
@@ -25,21 +25,6 @@ https://api.telegram.org/bot<BOT_TOKEN>/getUpdates
 <BOT_TOKEN> change to your chat token
 ```bash
 curl -s "https://api.telegram.org/bot<BOT_TOKEN>/getUpdates" | jq '.result[].message.chat.id'
-```
-## 3. Understanding LAST_IP_FILE
-Purpose
-1. Stores the last known IP address (default location: /tmp/last_ip.txt)
-2. Used to compare with current IP
-3. Created automatically on first run
-
-### How to Change Location
-Replace in your script:
-```bash
-LAST_IP_FILE="/tmp/last_ip.txt"
-```
-With your preferred path, for example:
-```bash
-LAST_IP_FILE="$HOME/ip_monitor/last_ip.txt"
 ```
 
 ## Sample Telegram API Response
@@ -71,7 +56,7 @@ sudo crontab -e
 In an editor (for example nano), insert the line:
 
 ```bash
-*/30 * * * * /usr/local/bin/ip_notifier.sh >> /var/log/ip_notifier.log 2>&1
+*/5 * * * * /usr/local/bin/ip_nginx_status_monitor.sh
 ```
 
 ### 3. Save changes
@@ -88,28 +73,12 @@ sudo crontab -l
 Expected output:
 
 ```bash
-*/30 * * * * /usr/local/bin/ip_notifier.sh >> /var/log/ip_notifier.log 2>&1
+*/5 * * * * /usr/local/bin/ip_nginx_status_monitor.sh
 ```
 
 Important notes:
 ```bash
-*/30 * * * * - execute every 30 minutes
+*/5 * * * * - execute every 5 minutes
 
 /path/to/script.sh - full path to your executable script
-
->> /path/to/log.log - redirect output to a log file
-
-2>&1 - redirect errors to the same log file
-```
-
-Additional settings
-Before adding a task, make sure that:
-
-The log file exists: sudo touch /var/log/ip_notifier.log
-
-The correct permissions are set:
-
-```bash
-sudo chmod 644 /var/log/ip_notifier.log
-sudo chown root:root /var/log/ip_notifier.log
 ```

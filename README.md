@@ -13,10 +13,10 @@ server_scripts/
 │   ├── nginx_config.sh       # Автоматическая настройка Nginx  
 │   └── certbot_auto.sh       # Обновление SSL-сертификатов  
 │  
-├── /monitoring/              # Мониторинг и логи  
-│   ├── ip_address_monitoring # Telegram Bot Setup Guide for IP Monitoring  
-│   ├── connection_tracker.sh # Telegram Bot Configuration Guide for ssh Connection Monitoring
-│   └── service_checker.py    # Проверка статуса сервисов  
+├── /monitoring/                 # Мониторинг и логи  
+│   ├── ip_address_monitoring    # Telegram Bot Setup Guide for IP Monitoring  
+│   ├── connection_tracker.sh    # Telegram Bot Configuration Guide for ssh Connection Monitoring
+│   └── ip_nginx_status_monitor  # Guide to Setting Up Telegram Bot for Monitoring nginx Sites  
 │  
 ├── /security/               # Безопасность  
 │   ├── firewall_rules.sh     # Настройка iptables/firewalld  
